@@ -1,20 +1,11 @@
-angular.module("alurapic").controller("FotosController",function($scope){
-    $scope.fotos = [
-        {
-            titulo: "Leão 1",
-            url: "http://www.fundosanimais.com/Minis/leoes.jpg"
-        },
-        {
-            titulo: "Leão 2",
-            url: "http://www.fundosanimais.com/Minis/leoes.jpg"
-        },
-        {
-            titulo: "Leão 3",
-            url: "http://www.fundosanimais.com/Minis/leoes.jpg"
-        },
-        {
-            titulo: "Leão 4",
-            url: "http://www.fundosanimais.com/Minis/leoes.jpg"
-        }
-    ]
+angular.module("alurapic").controller("FotosController",function($scope,$http){
+    $scope.fotos = [];
+
+    $http.get("/v1/fotos").
+    success(function(data){
+        $scope.fotos = data;
+    }).
+    error(function(error){
+        console.log(error);
+    });
 });
