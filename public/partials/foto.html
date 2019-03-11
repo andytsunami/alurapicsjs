@@ -1,30 +1,46 @@
-<div class="page-header text-center">
-    <h1>{{foto.titulo}}</h1>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1>{{foto.titulo}}</h1>
+    </div>
+    
+    <form novalidate name="formulario" class="row" ng-submit="submeter()">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Título</label>
+                <input required name="titulo" class="form-control" ng-model="foto.titulo" ng-maxlength="20">
+                
+                <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.required">
+                        Título obrigatório
+                </span>
+                <span class="form-control alert-danger" ng-show="formulario.$submitted && formulario.titulo.$error.maxlength">
+                       No máximo 20 caracteres!
+                </span>
+            </div>
+            <div class="form-group">
+                <label>URL</label>
+                <input required name="url" class="form-control" ng-model="foto.url">
+                
+                <span ng-show="formulario.$submitted && formulario.url.$error.required" 
+                class="form-control alert-danger">
+                    URL obrigatória
+                </span> 
+
+            </div>
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea name="descricao" class="form-control" ng-model="foto.descricao">
+                </textarea>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">
+                Salvar
+            </button>
+             <a href="/" class="btn btn-primary">Voltar</a>
+            <hr>
+        </div>
+        <div class="col-md-6">
+            <minha-foto></minha-foto>
+        </div>
+    </form>
 </div>
-
-<form name="formulario" class="row" ng-submit="submeter()">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label>Título</label>
-            <input name="titulo" class="form-control" ng-model="foto.titulo">    
-        </div>
-        <div class="form-group">
-            <label>URL</label>
-            <input name="url" class="form-control" ng-model="foto.url">
-        </div>
-        <div class="form-group">
-            <label>Descrição</label>
-            <textarea name="descricao" class="form-control" ng-model="foto.descricao">
-            </textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">
-            Salvar
-        </button>
-         <a href="/" class="btn btn-primary">Voltar</a>
-        <hr>
-    </div>
-    <div class="col-md-6">
-        <minha-foto></minha-foto>
-    </div>
-</form>
