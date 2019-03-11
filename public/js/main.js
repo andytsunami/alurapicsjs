@@ -9,6 +9,7 @@ angular.module("alurapic",["minhasDiretivas","ngAnimate","ngRoute"])
     })
     .when("/fotos/new",{
         templateUrl: "partials/foto.html",
+        controller: "FotoController"
     
     });
 
