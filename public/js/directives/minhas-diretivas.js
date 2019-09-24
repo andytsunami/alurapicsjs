@@ -36,18 +36,15 @@ angular.module("minhasDiretivas",[]).directive("meuPainel",function(){
     ddo.template = '<button class="btn btn-danger btn-block" ng-click="acao()">{{nome}}</button>';
     return ddo;
 })
-.directive("meuFocus", function(){
+.directive('meuFocus', function() {
     var ddo = {};
     ddo.restrict = "A";
-    ddo.scope = {
-        focado : "="
-    }
-
-    ddo.link = function(scope, element){
-        scope.$watch("focado", function(){
-            alert("Mudei");
-        })
-    }
+   
+    ddo.link = function(scope, element) {
+         scope.$on('fotoCadastrada', function() {
+             element[0].focus();
+         });
+    };
 
     return ddo;
 });
